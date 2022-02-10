@@ -11,14 +11,14 @@ trap 'echo "\"${last_command}\" command filed with exit code $?."' EXIT
 # Extract the base64 encoded config data and write this to the KUBECONFIG
 echo "$KUBE_CONFIG_DATA" | base64 --decode > /tmp/config
 export KUBECONFIG=/tmp/config
-export KUBE_NAMESPACE="$NAMESPACE"
-export KUBE_IMAGE="$IMAGE"
-export SELECTOR_NAME="$NAME"
+export NAMESPACE="$KUBE_NAMESPACE"
+export IMAGE="$KUBE_IMAGE"
+export NAME="$SELECTOR_NAME"
 
 kubectl config current-context
-echo "${KUBE_NAMESPACE}"
-echo "${KUBE_IMAGE}"
-echo "${SELECTOR_NAME}"
-kubectl get deployments ${NAME}
+echo "${NAMESPACE}"
+echo "${IMAGE}"
+echo "${NAME}"
+kubectl get deployments ${NAME} --namespace=${NAMESPACE}
 kubectl set image deployments/${NAME} ${NAME}=${IMAGE} --namespace=${NAMESPACE} --record
 #kubectl delete pods -l app=${NAME} --namespace=${NAMESPACE}
