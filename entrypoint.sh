@@ -19,6 +19,6 @@ kubectl config current-context
 echo "${KUBE_NAMESPACE}"
 echo "${KUBE_IMAGE}"
 echo "${SELECTOR_NAME}"
-kubectl get deployments ${SELECTOR_NAME}
-kubectl set image deployments ${SELECTOR_NAME} ${SELECTOR_NAME}=${KUBE_IMAGE} --namespace=${KUBE_NAMESPACE} --record
-#kubectl delete pods -l app=${SELECTOR_NAME} --namespace=${KUBE_NAMESPACE}
+kubectl get deployments ${NAME}
+kubectl set image deployments/${NAME} ${NAME}=${IMAGE} --namespace=${NAMESPACE} --record
+#kubectl delete pods -l app=${NAME} --namespace=${NAMESPACE}
