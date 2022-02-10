@@ -16,5 +16,5 @@ export KUBE_IMAGE="$IMAGE"
 export SELECTOR_NAME="$NAME"
 
 kubectl config current-context
-kubectl set image deployments/${SELECTOR_NAME} ${SELECTOR_NAME}=$DOCKER_REGISTRY_HOST/${KUBE_IMAGE} --namespace=${KUBE_NAMESPACE} --record
+kubectl set image deployments/${SELECTOR_NAME} ${SELECTOR_NAME}=${KUBE_IMAGE} --namespace=${KUBE_NAMESPACE} --record
 #kubectl delete pods -l app=${SELECTOR_NAME} --namespace=${KUBE_NAMESPACE}
