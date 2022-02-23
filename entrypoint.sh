@@ -21,4 +21,5 @@ echo "${IMAGE}"
 echo "${NAME}"
 kubectl get deployments ${NAME} --namespace=${NAMESPACE}
 kubectl set image deployments/${NAME} ${NAME}=${IMAGE} --namespace=${NAMESPACE} --record
+kubectl rollout restart deployment ${NAME} --namespace=${NAMESPACE}
 #kubectl delete pods -l app=${NAME} --namespace=${NAMESPACE}
